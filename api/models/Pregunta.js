@@ -9,9 +9,16 @@ module.exports = {
 
   attributes: {
 
-    pregunta : { type: 'string' },
+    pregunta : {
+    	type: 'string',
+    	size: 255,
+    	required: true
+	},
 
-    respuesta : { type: 'string' }
+    respuesta : { type: 'string',
+    	size: 255,
+    	required: true
+    }
   }
 };
 

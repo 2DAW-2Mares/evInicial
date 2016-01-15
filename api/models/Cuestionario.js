@@ -16,6 +16,21 @@ module.exports = {
     preguntas : {
     	collection : 'pregunta',
     	via : 'cuestionarios'
+    },
+
+    duplicar: function (cb) {
+	    cuestionarioJSON = this.toJSON();
+	    delete cuestionarioJSON["id"];
+	    Cuestionario.create(cuestionarioJSON)
+	    	.exec(function createCB(err, created){
+			      if (err) return cb(err);
+			      /*
+			      cuestionario.preguntas.forEach(function(pregunta){
+			      	created.preguntas.add(pregunta.id)
+			      });
+				*/
+			    cb(null, created);
+	    })
     }
 
   },

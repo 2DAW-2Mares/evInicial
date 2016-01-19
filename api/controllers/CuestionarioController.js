@@ -31,6 +31,12 @@ module.exports = {
 			(function (err, cuestionarioDuplicado)
 				{ res.json(cuestionarioDuplicado)}
 			);
+	},
+
+	asociarGrupo: function(req, res, next) {
+		console.log(req.cuestionario.id + ' - ' + req.cuestionario.alumnos)
+		req.cuestionario.asociarGrupo(req.grupo);
+		res.json(req.cuestionario);
 	}
 
 };

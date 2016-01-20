@@ -1,0 +1,182 @@
+[
+  {
+    "model":"pregunta",
+    "items":[
+    {
+        "pregunta": "Capital de España",
+        "respuesta": "Madrid",
+        "createdAt": "2016-01-18T11:12:23.043Z",
+        "updatedAt": "2016-01-18T11:12:23.043Z",
+        "id": 1
+    },
+    {
+        "pregunta": "Capital de Francia",
+        "respuesta": "Paris",
+        "createdAt": "2016-01-18T11:12:25.046Z",
+        "updatedAt": "2016-01-18T11:12:25.047Z",
+        "id": 2
+    },
+    {
+        "pregunta": "Capital de Italia",
+        "respuesta": "Roma",
+        "createdAt": "2016-01-18T11:12:26.952Z",
+        "updatedAt": "2016-01-18T11:12:26.952Z",
+        "id": 3
+    }
+]
+  },
+  {
+    "model":"cuestionario",
+    "items":[
+      {
+          "preguntas": [
+              {
+                  "pregunta": "Capital de Francia",
+                  "respuesta": "Paris",
+                  "createdAt": "2016-01-18T11:12:25.046Z",
+                  "updatedAt": "2016-01-18T11:12:25.047Z",
+                  "id": 2
+              },
+              {
+                  "pregunta": "Capital de Italia",
+                  "respuesta": "Roma",
+                  "createdAt": "2016-01-18T11:12:26.952Z",
+                  "updatedAt": "2016-01-18T11:12:26.952Z",
+                  "id": 3
+              }
+          ],
+          "alumnos": [],
+          "observaciones": "Evaluación Inicial",
+          "fechaFin": "2016-02-21T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:12:30.099Z",
+          "updatedAt": "2016-01-19T12:18:16.578Z",
+          "id": 1
+      },
+      {
+          "preguntas": [],
+          "alumnos": [],
+          "observaciones": "Evaluación final",
+          "fechaFin": "2016-06-20T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:12:31.857Z",
+          "updatedAt": "2016-01-18T11:12:31.857Z",
+          "id": 2
+      }
+    ]   
+  },
+  {
+    "model":"grupo",
+    "items":[
+      {
+          "alumnos": [],
+          "anyo": "2015/16",
+          "grupo": "2DAW",
+          "subgrupo": "2DAWO",
+          "ensenyanza": "Desarrollo de Aplicaciones Web",
+          "curso": "2",
+          "createdAt": "2016-01-18T11:13:44.456Z",
+          "updatedAt": "2016-01-18T11:19:14.816Z",
+          "id": 1
+      },
+      {
+          "alumnos": [],
+          "anyo": "2015/16",
+          "grupo": "1DAW",
+          "subgrupo": "1DAWO",
+          "ensenyanza": "Desarrollo de Aplicaciones Web",
+          "curso": "1",
+          "createdAt": "2016-01-18T11:13:51.239Z",
+          "updatedAt": "2016-01-18T11:19:20.061Z",
+          "id": 2
+      }
+    ]
+  },
+  {
+    "model":"alumno",
+    "items":[
+      {
+          "cuestionarios": [],
+          "grupo": {
+              "anyo": "2015/16",
+              "grupo": "2DAW",
+              "subgrupo": "2DAWO",
+              "ensenyanza": "Desarrollo de Aplicaciones Web",
+              "curso": "2",
+              "createdAt": "2016-01-18T11:13:44.456Z",
+              "updatedAt": "2016-01-18T11:19:14.816Z",
+              "id": 1
+          },
+          "dni": "12345678A",
+          "apellido1": "alumno1ap1",
+          "apellido2": "alumno1ap2",
+          "nombre": "alumno1nombre",
+          "fechaNac": "2000-01-01T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:12:49.684Z",
+          "updatedAt": "2016-01-18T11:19:03.776Z",
+          "id": 2
+      },
+      {
+          "cuestionarios": [],
+          "grupo": {
+              "anyo": "2015/16",
+              "grupo": "2DAW",
+              "subgrupo": "2DAWO",
+              "ensenyanza": "Desarrollo de Aplicaciones Web",
+              "curso": "2",
+              "createdAt": "2016-01-18T11:13:44.456Z",
+              "updatedAt": "2016-01-18T11:19:14.816Z",
+              "id": 1
+          },
+          "dni": "12345678B",
+          "apellido1": "alumno2ap1",
+          "apellido2": "alumno2ap2",
+          "nombre": "alumno2nombre",
+          "fechaNac": "2000-01-02T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:13:10.169Z",
+          "updatedAt": "2016-01-18T11:19:08.969Z",
+          "id": 3
+      },
+      {
+          "cuestionarios": [],
+          "grupo": {
+              "anyo": "2015/16",
+              "grupo": "2DAW",
+              "subgrupo": "2DAWO",
+              "ensenyanza": "Desarrollo de Aplicaciones Web",
+              "curso": "2",
+              "createdAt": "2016-01-18T11:13:44.456Z",
+              "updatedAt": "2016-01-18T11:19:14.816Z",
+              "id": 1
+          },
+          "dni": "12345678C",
+          "apellido1": "alumno3ap1",
+          "apellido2": "alumno3ap2",
+          "nombre": "alumno3nombre",
+          "fechaNac": "2000-01-03T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:13:20.950Z",
+          "updatedAt": "2016-01-18T11:19:14.826Z",
+          "id": 4
+      },
+      {
+          "cuestionarios": [],
+          "grupo": {
+              "anyo": "2015/16",
+              "grupo": "1DAW",
+              "subgrupo": "1DAWO",
+              "ensenyanza": "Desarrollo de Aplicaciones Web",
+              "curso": "1",
+              "createdAt": "2016-01-18T11:13:51.239Z",
+              "updatedAt": "2016-01-18T11:19:20.061Z",
+              "id": 2
+          },
+          "dni": "12345678D",
+          "apellido1": "alumno4ap1",
+          "apellido2": "alumno4ap2",
+          "nombre": "alumno4nombre",
+          "fechaNac": "2000-01-04T00:00:00.000Z",
+          "createdAt": "2016-01-18T11:13:38.279Z",
+          "updatedAt": "2016-01-18T11:19:20.072Z",
+          "id": 5
+      }
+    ]
+  }
+]

@@ -1,3 +1,6 @@
+// api/hooks/permissions.js
+
+/*
 var permissionPolicies = [
   'passport',
   'sessionAuth',
@@ -6,6 +9,7 @@ var permissionPolicies = [
   'PermissionPolicy',
   'RolePolicy'
 ];
+*/
 
 module.exports = function (sails) {
   return {
@@ -17,45 +21,49 @@ module.exports = function (sails) {
     _modelCache: { },
 
     configure: function () {
-      if (!_.isObject(sails.config.permissions)) sails.config.permissions = { };
+    //  if (!_.isObject(sails.config.permissions)) sails.config.permissions = { };
 
       sails.config.blueprints.populate = false;
     },
     initialize: function (next) {
-      sails.log.info('permissions: initializing sails-permissions hook');
-
+      sails.log.info('custom-permissions: initializing custom-permissions hook');
+      
       if (!validateDependencies(sails)) {
-        sails.log.error('Cannot find sails-auth hook. Did you "npm install sails-auth --save"?');
+        sails.log.error('Cannot find sails-permissions hook. Did you "npm install sails-auth sails-permissions --save"?');
         sails.log.error('Please see README for installation instructions: https://github.com/tjwebb/sails-permissions');
         return sails.lower();
       }
 
+      /*
       if (!validatePolicyConfig(sails)) {
         sails.log.error('One or more required policies are missing.');
         sails.log.error('Please see README for installation instructions: https://github.com/tjwebb/sails-permissions');
         return sails.lower();
       }
-
-
+      */
+      /*
       sails.after(sails.config.permissions.afterEvent, function () {
           installCustomPermissions(sails);
       });
-
+      */
       sails.after('hook:permissions:loaded', function () {
+        /*
         Model.count()
           .then(function (count) {
             if (count == sails.models.length) return next();
-
-            return initializeFixtures(sails)
+        */
+            return initializeCustomPermissions(sails)
               .then(function () {
                 sails.emit('hook:custom-permissions:loaded');
                 next();
               });
+        /*
           })
           .catch(function (error) {
             sails.log.error(error);
             next(error);
           });
+        */
       });
     }
   };
@@ -64,9 +72,9 @@ module.exports = function (sails) {
 /**
  * Install the application. Sets up default Roles, Users, Models, and
  * Permissions, and creates an admin user.
- */
-function initializeFixtures (sails) {
-  return require('../../config/fixtures/model').createModels()
+ 
+function initializeCustomPermissions (sails) {
+  return require('../../config/permissions/model').createModels()
     .bind({ })
     .then(function (models) {
       this.models = models;
@@ -96,9 +104,15 @@ function initializeFixtures (sails) {
       sails.log.error(error);
     });
 }
+*/
 
-function installCustomPermissions (sails) {
+function initializeCustomPermissions (sails) {
+  return require('../../config/fixtures/permissions').create();
+}
+
 /*
+function installCustomPermissions (sails) {
+
   var models = sails.models;
   if (sails.config.models.autoCreatedBy === false) return;
 
@@ -116,9 +130,11 @@ function installCustomPermissions (sails) {
       }
     });
   });
-*/
-}
 
+}
+*/
+
+/*
 function validatePolicyConfig (sails) {
   var policies = sails.config.policies;
   return _.all([
@@ -127,7 +143,8 @@ function validatePolicyConfig (sails) {
     policies.AuthController && _.contains(policies.AuthController['*'], 'passport')
   ]);
 }
+*/
 
 function validateDependencies (sails) {
-  return !!sails.hooks['sails-auth'];
+  return !!sails.hooks['sails-permissions'];
 }

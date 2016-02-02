@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+<html ng-app="quizApp" xmlns="http://www.w3.org/1999/xhtml">
+    <title>Quiz Application</title>
+    <!-- You may wish to bundle and minify in your project. It is not bundled and minified here to keep things simple here. -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/helperService.js"></script>
+    <script src="js/app/quizCtrl.js"></script>
+    <script src="js/app/createCtrl.js"></script>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -29,7 +40,9 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
@@ -60,7 +73,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
 
@@ -89,6 +102,15 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/app/app.js"></script>
+    <script src="/js/app/createCtrl.js"></script>
+    <script src="/js/app/emptyQuiz.js"></script>
+    <script src="/js/app/helperService.js"></script>
+    <script src="/js/app/quizCtrl.js"></script>
+    <script src="/js/data/aspnet-answer.js"></script>
+    <script src="/js/data/aspnet.js"></script>
+    <script src="/js/data/csharp.js"></script>
+    <script src="/js/data/designPatterns.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

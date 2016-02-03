@@ -30,6 +30,23 @@ _.extend(passport.prototype, {
 	  // the provider will redirect the user back to the application at
 	  //     /auth/:provider/callback
 	  this.authenticate(provider, options)(req, res, req.next);
+	},
+	connect : function (req, query, profile, next) {
+		var hostedDomain = false;
+		profile.emails.forEach(function(email) {
+			sails.log.verbose('passportService', email);
+			
+			if(email.value.search('murciaeduca.es') > 0 ) {
+				hostedDomain = true;
+			}
+			
+		});
+
+		if (!hostedDomain) {
+			next(new Error('Solo se permiten emails de murciaeduca.es'));
+		} else {
+			_super.connect(req, query, profile, next);
+		}
 	}
 });
 

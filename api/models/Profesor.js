@@ -15,6 +15,10 @@ module.exports = {
 
 		email: { type: 'string', size: 100 },
 
+	    user: {
+	        model: 'user'
+	    },
+
 		materias: { collection: 'MateriaImpartida', via: 'profesor' }
 
 	}

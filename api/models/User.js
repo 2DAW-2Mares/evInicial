@@ -41,32 +41,39 @@ afterCreate: [
         })
       );
     },
-    /*
+    
     function attachProfesorRole (user, next) {
-      Promise.bind({ }, Profesor.findOne({email: user.email})
-      		.populate('user')
-
-      	User.findOne(user.id)
-        .populate('roles')
-        .then(function (user) {
-          this.user = user;
-          return Role.findOne({ name: 'registered' });
+      Profesor.findOne({email: user.email})
+        .populate('user')
+        .then(function (profesor) {
+          if(profesor) {
+            Profesor.update(profesor.id, {user: user.id}).then(function(profesor){
+             Promise.bind({ }, User.findOne(user.id)
+              .populate('roles')
+              .then(function (user) {
+                this.user = user;
+                return Role.findOne({ name: 'profesor' });
+              })
+              .then(function (role) {
+                this.user.roles.add(role.id);
+                return this.user.save();
+              })
+              .then(function (updatedUser) {
+                sails.log.verbose('role "profesor" attached to user', profesor.nombre);
+                next();
+              })
+              .catch(function (e) {
+                sails.log.error(e);
+                next(e);
+              })
+            );
+            })
+          } else {
+            next();
+          }
         })
-        .then(function (role) {
-          this.user.roles.add(role.id);
-          return this.user.save();
-        })
-        .then(function (updatedUser) {
-          sails.log.verbose('role "registered" attached to user', this.user.username);
-          next();
-        })
-        .catch(function (e) {
-          sails.log.error(e);
-          next(e);
-        })
-      );
     },
-    */
+    
     function attachAlumnoRole (user, next) {
       Alumno.findOne({email: user.email})
       	.populate('user')
@@ -84,7 +91,7 @@ afterCreate: [
 			          return this.user.save();
 			        })
 			        .then(function (updatedUser) {
-			          sails.log.verbose('role "alumno" attached to user', this.user.username);
+			          sails.log.verbose('role "alumno" attached to user', alumno.nombre);
 			          next();
 			        })
 			        .catch(function (e) {

@@ -32,21 +32,25 @@ _.extend(passport.prototype, {
 	  this.authenticate(provider, options)(req, res, req.next);
 	},
 	connect : function (req, query, profile, next) {
-		var hostedDomain = false;
-		profile.emails.forEach(function(email) {
-			sails.log.verbose('passportService', email);
-			
-			if(email.value.search('murciaeduca.es') > 0 ) {
-				hostedDomain = true;
-			}
-			
-		});
+		if(sails.config.passport.google && sails.config.passport.google.options.hd) {
+			var hostedDomain = false;
+			profile.emails.forEach(function(email) {
+				
+				if(email.value.search(sails.config.passport.google.options.hd) > 0 ) {
+					hostedDomain = true;
+				}
+				
+			});
 
-		if (!hostedDomain) {
-			next(new Error('Solo se permiten emails de murciaeduca.es'));
-		} else {
-			_super.connect(req, query, profile, next);
+
+			if (!hostedDomain) {
+	            req.flash('error', 'El email del usuario ' + profile.displayName + ' no pertenece al dominio ' + sails.config.passport.google.options.hd);
+				return next(new Error('Solo se permiten emails de murciaeduca.es'));
+			}
 		}
+
+		_super.connect(req, query, profile, next);
+		
 	}
 });
 

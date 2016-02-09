@@ -37,6 +37,11 @@ module.exports = {
 		console.log(req.cuestionario.id + ' - ' + req.cuestionario.alumnos)
 		req.cuestionario.asociarGrupo(req.grupo);
 		res.json(req.cuestionario);
+	},
+
+	resultado: function(req, res, next) {
+		var aciertos = 8, errores = 2;
+		res.render('cuestionarios/resultado.ejs', {aciertos: aciertos, errores: errores});
 	}
 
 };

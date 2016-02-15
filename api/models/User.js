@@ -47,7 +47,7 @@ afterCreate: [
         .populate('user')
         .then(function (profesor) {
           if(profesor) {
-            Profesor.update(profesor.id, {user: user.id}).then(function(profesor){
+            Profesor.update(profesor.id, {user: user.id}).then(function(profesores){
              Promise.bind({ }, User.findOne(user.id)
               .populate('roles')
               .then(function (user) {
@@ -79,7 +79,7 @@ afterCreate: [
       	.populate('user')
       	.then(function (alumno) {
       		if(alumno) {
-	      		Alumno.update(alumno.id, {user: user.id}).then(function(alumno){
+	      		Alumno.update(alumno.id, {user: user.id}).then(function(alumnos){
 			       Promise.bind({ }, User.findOne(user.id)
 			        .populate('roles')
 			        .then(function (user) {
